@@ -221,7 +221,7 @@ string getExecutablePath(){
 	path = string( buffer ).substr( 0, pos);
 #elif BOOST_OS_LINUX
 	// http://stackoverflow.com/questions/5525668/how-to-implement-readlink-to-find-the-path
-	char buff[PATH_MAX];
+	char buff[4096];
     ssize_t len = ::readlink("/proc/self/exe", buff, sizeof(buff)-1);
     if (len != -1) {
       buff[len] = '\0';
