@@ -33,6 +33,7 @@ using std::vector;
 using std::binary_function;
 using std::map;
 
+#undef BOOST_OS_WINDOWS
 
 #ifdef BOOST_OS_WINDOWS
 #include <Windows.h>>
@@ -49,11 +50,11 @@ using std::map;
 namespace Potree{
 
 /**
- *   y 
+ *   y
  *   |-z
  *   |/
  *   O----x
- *    
+ *
  *   3----7
  *  /|   /|
  * 2----6 |
@@ -91,11 +92,11 @@ AABB childAABB(const AABB &aabb, const int &index){
 
 
 /**
- *   y 
+ *   y
  *   |-z
  *   |/
  *   O----x
- *    
+ *
  *   3----7
  *  /|   /|
  * 2----6 |
@@ -151,7 +152,7 @@ string toUpper(string str){
 
 // http://stackoverflow.com/questions/8593608/how-can-i-copy-a-directory-using-boost-filesystem
 bool copyDir(fs::path source, fs::path destination){
-	
+
     try{
         // Check whether the function call is valid
         if(!fs::exists(source) || !fs::is_directory(source) ) {
@@ -211,9 +212,9 @@ float psign(float value){
 string getExecutablePath(){
 
 	string path = "./";
-	
+
 #ifdef BOOST_OS_WINDOWS
-	char  buffer[MAX_PATH]; 
+	char  buffer[MAX_PATH];
 	GetModuleFileName( NULL, buffer, MAX_PATH );
 
 	string::size_type pos = string( buffer ).find_last_of( "\\/" );
@@ -230,7 +231,7 @@ string getExecutablePath(){
 		cout << "Using current work dir as executable directory. Make sure to run potree inside the directory with the executable to avoid problems." << endl;
 	}
 //#elif BOOST_OS_MACOS
-	// TODO 
+	// TODO
 	// http://stackoverflow.com/questions/799679/programatically-retrieving-the-absolute-path-of-an-os-x-command-line-app
 //#elif BOOST_OS_BSD
 	// TODO
